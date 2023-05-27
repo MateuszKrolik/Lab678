@@ -19,6 +19,13 @@ class MainWindow(QWidget):
     def process_data(self):
         input_file = self.line_edit.text()
         # Kontynuuj przetwarzanie danych...
+    def process_data(self):
+        input_file = self.line_edit.text()
+        output_file = self.line_edit_output.text()
+
+        task = DataProcessingTask(input_file, output_file)
+        QThreadPool.globalInstance().start(task)
+
 
 if __name__ == "__main__":
     app = QApplication([])

@@ -3,6 +3,7 @@ import json
 import yaml
 import xml.etree.ElementTree as ET
 import ui
+from PyQt5.QtCore import QRunnable, QThreadPool, QTimer
 
 
 
@@ -73,3 +74,20 @@ if __name__ == "__main__":
     except IOError:
         print(f"Błąd podczas zapisywania danych do pliku {output_file}.")
         exit(1)
+class DataProcessingTask(QRunnable):
+    def __init__(self, input_file, output_file):
+        super().__init__()
+        self.input_file = input_file
+        self.output_file = output_file
+
+    def run(self):
+        # Wczytywanie danych z pliku i przetwarzanie...
+
+        # Symulacja czasochłonnego zadania
+        QTimer.singleShot(3000, self.save_data)
+
+    def save_data(self):
+        # Zapis danych do pliku
+
+        # Zakończ zadanie
+        QThreadPool.globalInstance().releaseThread()
