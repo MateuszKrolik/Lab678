@@ -69,3 +69,11 @@ if __name__ == "__main__":
         exit(1)
 
     # Kontynuuj przetwarzanie danych...
+    
+    # Zapis danych do pliku XML
+    try:
+        tree.write(output_file)
+        print(f"Dane zapisano do pliku {output_file} w formacie XML.")
+    except IOError:
+        print(f"Błąd podczas zapisywania danych do pliku {output_file}.")
+        exit(1)
