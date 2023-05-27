@@ -29,3 +29,10 @@ jobs:
       with:
         name: executable
         path: dist/project.exe
+    - name: Upload executable to repository
+      uses: actions/upload-artifact@v3
+      with:
+        name: executable
+        path: dist/project.exe
+        retention-days: 7
+        repository: MateuszKrolik/Lab678
