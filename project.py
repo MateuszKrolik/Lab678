@@ -1,6 +1,8 @@
 import argparse
 import json
 import yaml
+import xml.etree.ElementTree as ET
+
 
 
 def parse_arguments():
@@ -55,3 +57,15 @@ if __name__ == "__main__":
     except IOError:
         print(f"Błąd podczas zapisywania danych do pliku {output_file}.")
         exit(1)
+    # Wczytanie danych z pliku XML
+    try:
+        tree = ET.parse(input_file)
+        root = tree.getroot()
+    except FileNotFoundError:
+        print(f"Plik {input_file} nie został odnaleziony.")
+        exit(1)
+    except ET.ParseError as e:
+        print(f"Błąd podczas wczytywania pliku {input_file}: {e}")
+        exit(1)
+
+    # Kontynuuj przetwarzanie danych...
