@@ -46,3 +46,12 @@ if __name__ == "__main__":
         exit(1)
 
     # Kontynuuj przetwarzanie danych...
+   
+    # Zapis danych do pliku YAML
+    try:
+        with open(output_file, "w") as file:
+            yaml.dump(data, file)
+        print(f"Dane zapisano do pliku {output_file} w formacie YAML.")
+    except IOError:
+        print(f"Błąd podczas zapisywania danych do pliku {output_file}.")
+        exit(1)
