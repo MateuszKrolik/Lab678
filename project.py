@@ -23,3 +23,12 @@ if __name__ == "__main__":
         exit(1)
 
     # Kontynuuj przetwarzanie danych...
+
+    # Zapis danych do pliku JSON
+    try:
+        with open(output_file, "w") as file:
+            json.dump(data, file, indent=4)
+        print(f"Dane zapisano do pliku {output_file} w formacie JSON.")
+    except IOError:
+        print(f"Błąd podczas zapisywania danych do pliku {output_file}.")
+        exit(1)
